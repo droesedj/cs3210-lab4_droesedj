@@ -136,6 +136,7 @@ protected:
 	unsigned int radius;
 
 public:
+	/// Construct a circle explicitly with coordinates and radius specified.
 	circle(double x, double y, double z, double r);
 	~circle();
 	circle& operator=(const circle& from);

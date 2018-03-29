@@ -9,18 +9,18 @@
 #include "shape.h"
 
 point::point(double x, double y, double z){
-	//*p1[0][0] = x;
-	//*p1[0][1] = y;
-	//*p1[0][2] = z;
-	//*p1[0][3] = 1.0;
+	(*p1)[0][0] = x;
+	(*p1)[1][0] = y;
+	(*p1)[2][0] = z;
+	(*p1)[3][0] = 1.0;
 }
 
 point::~point(){
-	//delete p1;
+	//TODO
 }
 
 void point::draw(GraphicsContext* gc){
-//	gc->setPixel((int)*p1[0][0], (int)*p1[0][1]);
+	gc->setPixel((int)(*p1)[0][0], (int)(*p1)[1][0]);
 }
 
 void point::erase(){
