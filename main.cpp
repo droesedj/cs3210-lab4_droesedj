@@ -19,11 +19,12 @@ int main(void)
 {
 	GraphicsContext* gc = new X11Context(800,600,GraphicsContext::BLACK);
 
+	circle* theBigOlCircle = new circle(200.0,175.0,0.5,50.0);
 
 	// draw some lines
 	gc->setColor(GraphicsContext::GREEN);
 
-	(new circle(200.0,175.0,5.0,50.0))->draw(gc);
+	theBigOlCircle->draw(gc);
 
 
 

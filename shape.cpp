@@ -10,7 +10,7 @@
 
 shape::shape(){
 	color = 0;
-	p1 = new matrix(1,4);
+	p1 = new matrix(4,1);
 }
 
 shape::~shape(){
