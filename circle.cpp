@@ -9,7 +9,7 @@
 #include "shape.h"
 
 circle::circle(double x, double y, double z, double r){
-	p1 = new matrix(4,1);
+	//p1 = new matrix(4,1);
 	radius = (unsigned int)r;
 	(*p1)[0][0] = x;
 	(*p1)[1][0] = y;
@@ -27,9 +27,7 @@ circle& circle::operator=(const circle& from){
 }
 
 void circle::draw(GraphicsContext* gc){
-	double x = (*p1)[0][0];
-	double y = (*p1)[1][0];
-	gc->drawCircle((int)x, (int)y, radius);
+	gc->drawCircle((int)(*p1)[0][0], (int)(*p1)[1][0], radius);
 }
 
 void circle::erase(){

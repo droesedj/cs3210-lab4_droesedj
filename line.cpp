@@ -9,15 +9,15 @@
 #include "shape.h"
 
 line::line(double x0, double y0, double z0, double x1, double y1, double z1){
-	p2 = new matrix(1,4);
+	p2 = new matrix(4,1);
 	(*p1)[0][0] = x0;
-	(*p1)[0][1] = y0;
-	(*p1)[0][2] = z0;
-	(*p1)[0][3] = 1.0;
+	(*p1)[1][0] = y0;
+	(*p1)[2][0] = z0;
+	(*p1)[3][0] = 1.0;
 	(*p2)[0][0] = x1;
-	(*p2)[0][1] = y1;
-	(*p2)[0][2] = z1;
-	(*p2)[0][3] = 1.0;
+	(*p2)[1][0] = y1;
+	(*p2)[2][0] = z1;
+	(*p2)[3][0] = 1.0;
 }
 
 line::~line(){
@@ -25,7 +25,7 @@ line::~line(){
 }
 
 void line::draw(GraphicsContext* gc){
-	gc->drawLine((int)(*p1)[0][0],(int)(*p1)[0][1],(int)(*p2)[0][0],(int)(*p2)[0][1]);
+	gc->drawLine((int)(*p1)[0][0],(int)(*p1)[1][0],(int)(*p2)[0][0],(int)(*p2)[1][0]);
 }
 
 void line::erase(){

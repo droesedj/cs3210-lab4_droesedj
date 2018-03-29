@@ -19,21 +19,32 @@ int main(void)
 {
 	GraphicsContext* gc = new X11Context(800,600,GraphicsContext::BLACK);
 
-	circle* theBigOlCircle = new circle(200.0,175.0,0.5,50.0);
+	circle* theBigOlCircle = new circle(200.0, 175.0, 0.5, 50.0);
+
+	line* theBestLineEver = new line(20.0, 75.0, 0.0, 300.0, 288.0, 0.0);
+
+	triangle* theTriHard = new triangle(400.0, 400.0, 0.0,
+										450.0, 577.0, 0.0,
+										432.0, 588.0, 0.0);
 
 	// draw some lines
 	gc->setColor(GraphicsContext::GREEN);
 
 	theBigOlCircle->draw(gc);
 
+	gc->setColor(GraphicsContext::RED);
+	theBestLineEver->draw(gc);
 
+	gc->setColor(GraphicsContext::BLUE);
+	theTriHard->draw(gc);
 
+	sleep(2);
 
-	sleep(8);
+	delete theBigOlCircle;
+	delete theBestLineEver;
+	delete theTriHard;
 
-	//delete bigOlCircle;
-
-	//delete gc;
+	delete gc;
 
 	return 0;
 }

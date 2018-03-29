@@ -32,9 +32,10 @@ matrix* shape::getOrigin(){
 }
 
 std::ostream& shape::out(std::ostream& output){
+	//TODO
 	return output;
 }
 
 void shape::in(std::istream& input){
-
+	//TODO
 }

@@ -5,25 +5,32 @@
  *	@date March 28, 2018
  *  @file shape.h
  */
- 
-/*
-	Specifies the shape class.  Abstract.
-*/
 #include "matrix.h"
 #include "x11context.h"
 #include <unistd.h>
 #include <iostream>
 
+
+
+/**
+ * Shape Class.
+ * Abstract base for all other shapes to be based off of.
+ */
 class shape {
 	
 protected:
 	
-	//TODO
+	/// 24-BIT unsigned int representing the color of the line.
+	/// Each color gets 8-bits.
 	unsigned int color;
 	
+	/// Matrix where the origin of the shape's coordinates are stored.
 	matrix* p1;
 	
+	/// Constructor.
 	shape();
+
+	/// Destructor.
 	virtual ~shape();
 
 public:
@@ -38,7 +45,7 @@ public:
 	*/
 	virtual void erase() = 0;
 	
-	/*
+	/**
 	 * @param from Shape to copy from
 	 * @return this shape
 	 */
@@ -73,10 +80,24 @@ protected:
 
 public:
 
+	/**
+	 * Defines a point at the given coordinates.
+	 * @param x X-coordinate.
+	 * @param y Y-coordinate.
+	 * @param z Z-coordinate.
+	 */
 	point(double x, double y, double z);
+
+	/// Destructor.
 	~point();
 
+	/**
+	 * Draws the point on the given GraphicsContext
+	 * @param gc pointer to the GraphicsContext to draw the point on.
+	 */
 	void draw(GraphicsContext* gc);
+
+
 	void erase();
 	std::ostream& out(std::ostream& output);
 	void in(std::istream& input);
@@ -89,6 +110,7 @@ public:
 class line: public shape {
 protected:
 
+	/// Matrix representing the coordinates of the second point of the line.
 	matrix* p2;
 
 public:
@@ -110,12 +132,42 @@ public:
 class circle: public shape {
 protected:
 
+	/// Radius of the circle in pixels.
 	unsigned int radius;
 
 public:
 	circle(double x, double y, double z, double r);
 	~circle();
 	circle& operator=(const circle& from);
+	void draw(GraphicsContext* gc);
+	void erase();
+	std::ostream& out(std::ostream& output);
+	void in(std::istream& input);
+};
+
+
+/**
+ * Triangle class.
+ * Represents a triangle.
+ */
+class triangle: public shape {
+protected:
+
+	/// Second corner point of the triangle.
+	matrix* p2;
+	/// Third corner point of the triangle.
+	matrix* p3;
+
+public:
+	/// Construct a triangle explicitly with 3 given coordinate points.
+	triangle(double x, double y, double z,
+			 double x1, double y1, double z1,
+			 double x2, double y2, double z2);
+
+	/// Construct a triangle with 3 matrices of coordinates.
+	triangle(matrix* m0, matrix* m1, matrix* m2);
+	~triangle();
+	triangle& operator=(const triangle& from);
 	void draw(GraphicsContext* gc);
 	void erase();
 	std::ostream& out(std::ostream& output);
