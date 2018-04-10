@@ -13,6 +13,7 @@
 #include "matrix.h"
 #include "x11context.h"
 #include <unistd.h>
+#include <string>
 #include <iostream>
 
 

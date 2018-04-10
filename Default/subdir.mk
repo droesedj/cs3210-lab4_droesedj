@@ -6,6 +6,7 @@
 CPP_SRCS += \
 ../circle.cpp \
 ../gcontext.cpp \
+../image.cpp \
 ../line.cpp \
 ../main.cpp \
 ../matrix.cpp \
@@ -17,6 +18,7 @@ CPP_SRCS += \
 OBJS += \
 ./circle.o \
 ./gcontext.o \
+./image.o \
 ./line.o \
 ./main.o \
 ./matrix.o \
@@ -28,6 +30,7 @@ OBJS += \
 CPP_DEPS += \
 ./circle.d \
 ./gcontext.d \
+./image.d \
 ./line.d \
 ./main.d \
 ./matrix.d \

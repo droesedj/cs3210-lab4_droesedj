@@ -43,6 +43,7 @@ int main(void)
 
 	theImage->draw(gc);
 
+	theImage->out(std::cout);
 
 	sleep(2);
 

@@ -79,7 +79,19 @@ void triangle::draw(GraphicsContext* gc){
 }
 
 std::ostream& triangle::out(std::ostream& output){
-	//TODO
+	output << "TRIANGLE\t" << color << "\n\t"
+			<< (*p1)[0][0] << '\t'
+			<< (*p1)[1][0] << '\t'
+			<< (*p1)[2][0] << '\t'
+			<< (*p1)[3][0] << "\n\t"
+			<< (*p2)[0][0] << '\t'
+			<< (*p2)[1][0] << '\t'
+			<< (*p2)[2][0] << '\t'
+			<< (*p2)[3][0] << "\n\t"
+			<< (*p3)[0][0] << '\t'
+			<< (*p3)[1][0] << '\t'
+			<< (*p3)[2][0] << '\t'
+			<< (*p3)[3][0] << '\n';
 	return output;
 }
 

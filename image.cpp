@@ -1,8 +1,9 @@
-/*
- * image.cpp
- *
- *  Created on: Apr 10, 2018
- *      Author: cs3841
+/**
+ *	LAB WEEK 4: SHAPES
+ *	CS3210
+ *	@author Dennis Droese
+ *	@date April 10, 2018
+ *  @file image.cpp
  */
 
 #include "image.h"
@@ -44,7 +45,6 @@ void image::add(shape* addShape){
 }
 
 void image::draw(GraphicsContext* gc){
-	//TODO
 	if(firstShape != nullptr){
 		shape* iterator = firstShape;
 
@@ -70,6 +70,18 @@ void image::in(std::istream& input){
 }
 
 std::ostream& image::out(std::ostream& output){
-	//TODO
+	output << "IMAGE START\n";
+	if(firstShape != nullptr){
+		shape* iterator = firstShape;
+
+		//iterate through all of the shapes.
+		while(iterator->getNext() != nullptr){
+			iterator->out(output);
+			iterator = iterator->getNext();
+		}
+		//output the last shape
+		iterator->out(output);
+	}
+	output << "IMAGE END\n";
 	return output;
 }

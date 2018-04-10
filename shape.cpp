@@ -41,6 +41,7 @@ matrix* shape::getOrigin(){
 
 std::ostream& shape::out(std::ostream& output){
 	//TODO
+	output << "SHAPE\t" << color << '\t';
 	return output;
 }
 

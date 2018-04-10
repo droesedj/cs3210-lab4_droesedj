@@ -43,7 +43,12 @@ void circle::draw(GraphicsContext* gc){
 }
 
 std::ostream& circle::out(std::ostream& output){
-	//TODO
+	output << "CIRCLE\t" << color << "\n\t"
+			<< (*p1)[0][0] << '\t'
+			<< (*p1)[1][0] << '\t'
+			<< (*p1)[2][0] << '\t'
+			<< (*p1)[3][0] << '\t'
+			<< radius << '\n';
 	return output;
 }
 

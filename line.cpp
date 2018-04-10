@@ -46,7 +46,15 @@ void line::draw(GraphicsContext* gc){
 }
 
 std::ostream& line::out(std::ostream& output){
-	//TODO
+	output << "LINE\t" << color << "\n\t"
+			<< (*p1)[0][0] << '\t'
+			<< (*p1)[1][0] << '\t'
+			<< (*p1)[2][0] << '\t'
+			<< (*p1)[3][0] << "\n\t"
+			<< (*p2)[0][0] << '\t'
+			<< (*p2)[1][0] << '\t'
+			<< (*p2)[2][0] << '\t'
+			<< (*p2)[3][0] << '\n';
 	return output;
 }
 
