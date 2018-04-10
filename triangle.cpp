@@ -30,6 +30,30 @@ triangle::triangle(double x,  double y,  double z,
 	(*p3)[3][0] = 1.0;
 }
 
+triangle::triangle(double x,  double y,  double z,
+		 	 	   double x1, double y1, double z1,
+				   double x2, double y2, double z2,
+				   unsigned int col){
+
+	p2 = new matrix(4,1);
+	p3 = new matrix(4,1);
+
+	(*p1)[0][0] = x;
+	(*p1)[1][0] = y;
+	(*p1)[2][0] = z;
+	(*p1)[3][0] = 1.0;
+	(*p2)[0][0] = x1;
+	(*p2)[1][0] = y1;
+	(*p2)[2][0] = z1;
+	(*p2)[3][0] = 1.0;
+	(*p3)[0][0] = x2;
+	(*p3)[1][0] = y2;
+	(*p3)[2][0] = z2;
+	(*p3)[3][0] = 1.0;
+
+	color = col;
+}
+
 triangle::triangle(matrix* m0, matrix* m1, matrix* m2){
 	p1 = m0;
 	p2 = m1;
@@ -48,6 +72,7 @@ triangle& triangle::operator=(const triangle& from){
 }
 
 void triangle::draw(GraphicsContext* gc){
+	gc->setColor(color);
 	gc->drawLine((int)(*p1)[0][0],(int)(*p1)[1][0],(int)(*p2)[0][0],(int)(*p2)[1][0]);
 	gc->drawLine((int)(*p2)[0][0],(int)(*p2)[1][0],(int)(*p3)[0][0],(int)(*p3)[1][0]);
 	gc->drawLine((int)(*p3)[0][0],(int)(*p3)[1][0],(int)(*p1)[0][0],(int)(*p1)[1][0]);

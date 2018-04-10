@@ -17,6 +17,17 @@ circle::circle(double x, double y, double z, double r){
 	(*p1)[3][0] = 1.0;
 }
 
+circle::circle(double x, double y, double z, double r, unsigned int col){
+	//p1 = new matrix(4,1);
+	radius = (unsigned int)r;
+	(*p1)[0][0] = x;
+	(*p1)[1][0] = y;
+	(*p1)[2][0] = z;
+	(*p1)[3][0] = 1.0;
+
+	color = col;
+}
+
 circle::~circle(){
 	//TODO
 }
@@ -27,6 +38,7 @@ circle& circle::operator=(const circle& from){
 }
 
 void circle::draw(GraphicsContext* gc){
+	gc->setColor(color);
 	gc->drawCircle((int)(*p1)[0][0], (int)(*p1)[1][0], radius);
 }
 

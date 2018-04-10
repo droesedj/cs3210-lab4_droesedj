@@ -15,11 +15,20 @@ point::point(double x, double y, double z){
 	(*p1)[3][0] = 1.0;
 }
 
+point::point(double x, double y, double z, unsigned int col){
+	(*p1)[0][0] = x;
+	(*p1)[1][0] = y;
+	(*p1)[2][0] = z;
+	(*p1)[3][0] = 1.0;
+	color = col;
+}
+
 point::~point(){
 	//TODO
 }
 
 void point::draw(GraphicsContext* gc){
+	gc->setColor(color);
 	gc->setPixel((int)(*p1)[0][0], (int)(*p1)[1][0]);
 }
 

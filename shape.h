@@ -5,6 +5,11 @@
  *	@date March 28, 2018
  *  @file shape.h
  */
+
+// compile guard
+#ifndef SHAPE_H
+#define SHAPE_H
+
 #include "matrix.h"
 #include "x11context.h"
 #include <unistd.h>
@@ -27,13 +32,19 @@ protected:
 	/// Matrix where the origin of the shape's coordinates are stored.
 	matrix* p1;
 	
+	/// Next shape in the "shape chain"
+	shape* next;
+
 	/// Constructor.
 	shape();
+
+
+
+public:
 
 	/// Destructor.
 	virtual ~shape();
 
-public:
 
 	/**
 	*	Draws the shape.
@@ -60,6 +71,18 @@ public:
 	 * @return Matrix containing the origin of the shape.
 	 */
 	virtual matrix* getOrigin();
+
+	/**
+	 * @return Next shape in the chain.
+	 */
+	virtual shape* getNext();
+
+	/**
+	 * Sets the next shape in the chain.
+	 * Does NOT perform memory management.
+	 * @param shape Shape to set as the next.
+	 */
+	virtual void setNext(shape* shape);
 };
 
 ///===================
@@ -82,6 +105,9 @@ public:
 	 * @param z Z-coordinate.
 	 */
 	point(double x, double y, double z);
+
+	/// Constructor with specified color.
+	point(double x, double y, double z, unsigned int col);
 
 	/// Destructor.
 	~point();
@@ -109,6 +135,7 @@ protected:
 public:
 
 	line(double x0, double y0, double z0, double x1, double y1, double z1);
+	line(double x0, double y0, double z0, double x1, double y1, double z1, unsigned int col);
 	~line();
 
 	void draw(GraphicsContext* gc);
@@ -130,6 +157,7 @@ protected:
 public:
 	/// Construct a circle explicitly with coordinates and radius specified.
 	circle(double x, double y, double z, double r);
+	circle(double x, double y, double z, double r, unsigned int col);
 	~circle();
 	circle& operator=(const circle& from);
 	void draw(GraphicsContext* gc);
@@ -156,6 +184,12 @@ public:
 			 double x1, double y1, double z1,
 			 double x2, double y2, double z2);
 
+	/// Constructor with specified color.
+	triangle(double x, double y, double z,
+				 double x1, double y1, double z1,
+				 double x2, double y2, double z2,
+				 unsigned int col);
+
 	/// Construct a triangle with 3 matrices of coordinates.
 	triangle(matrix* m0, matrix* m1, matrix* m2);
 	~triangle();
@@ -164,3 +198,6 @@ public:
 	std::ostream& out(std::ostream& output);
 	void in(std::istream& input);
 };
+
+
+#endif
