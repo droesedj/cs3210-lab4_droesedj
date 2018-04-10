@@ -30,10 +30,6 @@ void circle::draw(GraphicsContext* gc){
 	gc->drawCircle((int)(*p1)[0][0], (int)(*p1)[1][0], radius);
 }
 
-void circle::erase(){
-	//TODO
-}
-
 std::ostream& circle::out(std::ostream& output){
 	//TODO
 	return output;

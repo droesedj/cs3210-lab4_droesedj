@@ -53,10 +53,6 @@ void triangle::draw(GraphicsContext* gc){
 	gc->drawLine((int)(*p3)[0][0],(int)(*p3)[1][0],(int)(*p1)[0][0],(int)(*p1)[1][0]);
 }
 
-void triangle::erase(){
-	//TODO
-}
-
 std::ostream& triangle::out(std::ostream& output){
 	//TODO
 	return output;

@@ -28,10 +28,6 @@ void line::draw(GraphicsContext* gc){
 	gc->drawLine((int)(*p1)[0][0],(int)(*p1)[1][0],(int)(*p2)[0][0],(int)(*p2)[1][0]);
 }
 
-void line::erase(){
-	//TODO
-}
-
 std::ostream& line::out(std::ostream& output){
 	//TODO
 	return output;

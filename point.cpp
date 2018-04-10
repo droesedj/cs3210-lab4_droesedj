@@ -23,10 +23,6 @@ void point::draw(GraphicsContext* gc){
 	gc->setPixel((int)(*p1)[0][0], (int)(*p1)[1][0]);
 }
 
-void point::erase(){
-	//TODO
-}
-
 std::ostream& point::out(std::ostream& output){
 	//TODO
 	return output;

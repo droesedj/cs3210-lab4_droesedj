@@ -41,11 +41,6 @@ public:
 	virtual void draw(GraphicsContext* gc) = 0;
 	
 	/**
-	*	Erases the shape and frees it from memory.
-	*/
-	virtual void erase() = 0;
-	
-	/**
 	 * @param from Shape to copy from
 	 * @return this shape
 	 */
@@ -97,8 +92,6 @@ public:
 	 */
 	void draw(GraphicsContext* gc);
 
-
-	void erase();
 	std::ostream& out(std::ostream& output);
 	void in(std::istream& input);
 };
@@ -119,7 +112,6 @@ public:
 	~line();
 
 	void draw(GraphicsContext* gc);
-	void erase();
 	std::ostream& out(std::ostream& output);
 	void in(std::istream& input);
 };
@@ -141,7 +133,6 @@ public:
 	~circle();
 	circle& operator=(const circle& from);
 	void draw(GraphicsContext* gc);
-	void erase();
 	std::ostream& out(std::ostream& output);
 	void in(std::istream& input);
 };
@@ -170,7 +161,6 @@ public:
 	~triangle();
 	triangle& operator=(const triangle& from);
 	void draw(GraphicsContext* gc);
-	void erase();
 	std::ostream& out(std::ostream& output);
 	void in(std::istream& input);
 };
