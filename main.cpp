@@ -14,10 +14,16 @@
 #include "shape.h"
 #include "image.h"
 #include <unistd.h>
+#include <sstream>
 #include <iostream>
 
 int main(void)
 {
+
+	std::istringstream pointToReadIn("POINT	19987215		88	275	0	1\n"
+									 "CIRCLE	88888		100	475	0	1	40\n"
+									 "TRI	16777777		300	100	0	1		250	277	0	1		222	202	0	1");
+
 	GraphicsContext* gc = new X11Context(800,600,GraphicsContext::BLACK);
 
 	circle* theBigOlCircle = new circle(200.0, 175.0, 0.5, 50.0,
@@ -25,6 +31,8 @@ int main(void)
 
 	point* whatsThePoint = new point(100.0, 300.0, 0.0,
 									 GraphicsContext::WHITE);
+
+//	whatsThePoint->in(pointToReadIn);
 
 	line* theBestLineEver = new line(20.0, 75.0, 0.0, 300.0, 288.0, 0.0,
 									 GraphicsContext::BLUE);
@@ -40,6 +48,8 @@ int main(void)
 	theImage->add(whatsThePoint);
 	theImage->add(theBestLineEver);
 	theImage->add(theTriHard);
+
+	theImage->in(pointToReadIn);
 
 	theImage->draw(gc);
 

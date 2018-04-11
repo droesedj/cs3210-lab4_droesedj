@@ -46,18 +46,22 @@ void line::draw(GraphicsContext* gc){
 }
 
 std::ostream& line::out(std::ostream& output){
-	output << "LINE\t" << color << "\n\t"
-			<< (*p1)[0][0] << '\t'
-			<< (*p1)[1][0] << '\t'
-			<< (*p1)[2][0] << '\t'
-			<< (*p1)[3][0] << "\n\t"
-			<< (*p2)[0][0] << '\t'
-			<< (*p2)[1][0] << '\t'
-			<< (*p2)[2][0] << '\t'
+	output << "LINE\t" << color << "\t"
+			<< (*p1)[0][0] << ' '
+			<< (*p1)[1][0] << ' '
+			<< (*p1)[2][0] << ' '
+			<< (*p1)[3][0] << "\t"
+			<< (*p2)[0][0] << ' '
+			<< (*p2)[1][0] << ' '
+			<< (*p2)[2][0] << ' '
 			<< (*p2)[3][0] << '\n';
 	return output;
 }
 
 void line::in(std::istream& input){
-	//TODO
+	std::string garbage;
+
+	input>>garbage>>color>>
+	(*p1)[0][0]>>(*p1)[1][0]>>(*p1)[2][0]>>(*p1)[3][0]>>
+	(*p2)[0][0]>>(*p2)[1][0]>>(*p2)[2][0]>>(*p2)[3][0];
 }

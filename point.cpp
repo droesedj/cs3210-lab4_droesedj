@@ -24,7 +24,6 @@ point::point(double x, double y, double z, unsigned int col){
 }
 
 point::~point(){
-	//TODO
 }
 
 void point::draw(GraphicsContext* gc){
@@ -33,20 +32,17 @@ void point::draw(GraphicsContext* gc){
 }
 
 std::ostream& point::out(std::ostream& output){
-	output << "POINT\t" << color << "\n\t"
-			<< (*p1)[0][0] << '\t'
-			<< (*p1)[1][0] << '\t'
-			<< (*p1)[2][0] << '\t'
+	output << "POINT\t" << color << "\t"
+			<< (*p1)[0][0] << ' '
+			<< (*p1)[1][0] << ' '
+			<< (*p1)[2][0] << ' '
 			<< (*p1)[3][0] << '\n';
 	return output;
 }
 
 void point::in(std::istream& input){
-	//TODO
-	input.get();
-	color = (unsigned int)(input.get());
-	(*p1)[0][0] = (double)(input.get());
-	(*p1)[1][0] = (double)(input.get());
-	(*p1)[2][0] = (double)(input.get());
-	(*p1)[3][0] = (double)(input.get());
+
+	std::string garbage;
+
+	input>>garbage>>color>>(*p1)[0][0]>>(*p1)[1][0]>>(*p1)[2][0]>>(*p1)[3][0];
 }

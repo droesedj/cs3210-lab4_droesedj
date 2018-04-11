@@ -29,7 +29,6 @@ circle::circle(double x, double y, double z, double r, unsigned int col){
 }
 
 circle::~circle(){
-	//TODO
 }
 
 circle& circle::operator=(const circle& from){
@@ -43,15 +42,19 @@ void circle::draw(GraphicsContext* gc){
 }
 
 std::ostream& circle::out(std::ostream& output){
-	output << "CIRCLE\t" << color << "\n\t"
-			<< (*p1)[0][0] << '\t'
-			<< (*p1)[1][0] << '\t'
-			<< (*p1)[2][0] << '\t'
+	output << "CIRCLE\t" << color << "\t"
+			<< (*p1)[0][0] << ' '
+			<< (*p1)[1][0] << ' '
+			<< (*p1)[2][0] << ' '
 			<< (*p1)[3][0] << '\t'
 			<< radius << '\n';
 	return output;
 }
 
 void circle::in(std::istream& input){
-	//TODO
+	std::string garbage;
+
+	input>>garbage>>color>>
+	(*p1)[0][0]>>(*p1)[1][0]>>(*p1)[2][0]>>(*p1)[3][0]
+	>>radius;
 }

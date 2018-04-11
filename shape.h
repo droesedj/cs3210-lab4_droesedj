@@ -14,6 +14,7 @@
 #include "x11context.h"
 #include <unistd.h>
 #include <string>
+#include <sstream>
 #include <iostream>
 
 
