@@ -13,11 +13,14 @@
 #include "x11context.h"
 #include <unistd.h>
 #include <iostream>
+#include <vector>
 #include "shape.h"
 
 
 class image {
 private:
+
+	std::vector<shape*> storage;
 
 	shape* firstShape;
 

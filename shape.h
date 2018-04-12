@@ -33,9 +33,6 @@ protected:
 	
 	/// Matrix where the origin of the shape's coordinates are stored.
 	matrix* p1;
-	
-	/// Next shape in the "shape chain"
-	shape* next;
 
 	/// Constructor.
 	shape();
@@ -62,29 +59,17 @@ public:
 	/**
 	*	Outputs the properties of the shape to an ostream.
 	*/
-	virtual std::ostream& out(std::ostream& output);
+	virtual std::ostream& out(std::ostream& output) = 0;
 	
 	/**
 	*	Reads and applies shape properties from an istream.
 	*/
-	virtual void in(std::istream& input);
+	virtual void in(std::istream& input) = 0;
 
 	/**
 	 * @return Matrix containing the origin of the shape.
 	 */
 	virtual matrix* getOrigin();
-
-	/**
-	 * @return Next shape in the chain.
-	 */
-	virtual shape* getNext();
-
-	/**
-	 * Sets the next shape in the chain.
-	 * Does NOT perform memory management.
-	 * @param shape Shape to set as the next.
-	 */
-	virtual void setNext(shape* shape);
 };
 
 ///===================

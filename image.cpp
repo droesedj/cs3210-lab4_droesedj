@@ -20,54 +20,40 @@ image::image(){
 }
 
 image::~image(){
-	if(firstShape != nullptr){
-		delete firstShape;
+	for(shape* i : storage){
+		delete i;
 	}
+
+	storage.clear();
 }
 
 image& image::operator=(const image& from){
-	if(firstShape != nullptr){
-		delete firstShape;
-	}
+	this->erase();
 
-	firstShape = from.firstShape;
+	storage = from.storage;
 
 	return *this;
 }
 
 void image::add(shape* addShape){
-	if(firstShape == nullptr){
-		firstShape = addShape;
-	} else {
-		shape* iterator = firstShape;
 
-		//iterate through all of the shapes until next is null
-		while(iterator->getNext() != nullptr){
-			iterator = iterator->getNext();
-		}
-		iterator->setNext(addShape);
-	}
+	storage.push_back(addShape);
 }
 
 void image::draw(GraphicsContext* gc){
-	if(firstShape != nullptr){
-		shape* iterator = firstShape;
-
-		//iterate through all of the shapes.
-		while(iterator->getNext() != nullptr){
-			iterator->draw(gc);
-			iterator = iterator->getNext();
-		}
-		//draw the last shape.
-		iterator->draw(gc);
+	for(shape* i : storage){
+		i->draw(gc);
 	}
+
 }
 
 void image::erase(){
-	if(firstShape != nullptr){
-		delete firstShape;
+
+	for(shape* i : storage){
+		delete i;
 	}
-	firstShape = nullptr;
+
+	storage.clear();
 }
 
 void image::in(istream& input){
@@ -104,16 +90,9 @@ void image::in(istream& input){
 
 std::ostream& image::out(std::ostream& output){
 	output << "IMAGE-START\n";
-	if(firstShape != nullptr){
-		shape* iterator = firstShape;
 
-		//iterate through all of the shapes.
-		while(iterator->getNext() != nullptr){
-			iterator->out(output);
-			iterator = iterator->getNext();
-		}
-		//output the last shape
-		iterator->out(output);
+	for(shape* i : storage){
+		i->out(output);
 	}
 	output << "IMAGE-END\n";
 	return output;
