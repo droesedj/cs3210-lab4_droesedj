@@ -16,7 +16,6 @@
 using namespace std;
 
 image::image(){
-	firstShape = nullptr;
 }
 
 image::~image(){
@@ -57,10 +56,11 @@ void image::erase(){
 }
 
 void image::in(istream& input){
+	/// Line of text from the istream.
 	string txtLine;
 	while(getline(input,txtLine)){
+		/// First word in txtLine.  Used to determine shape type.
 		string word;
-
 		stringstream(txtLine) >> word;
 		istringstream lineOut(txtLine);
 
@@ -78,10 +78,12 @@ void image::in(istream& input){
 			triangle* myTri = new triangle(0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0);
 			myTri->in(lineOut);
 			this->add(myTri);
+
 		} else if(word.compare("CIRCLE") == 0){
 			circle* myCircle = new circle(0,0.0,0.0,0.0);
 			myCircle->in(lineOut);
 			this->add(myCircle);
+
 		} else if(word.compare("IMAGE-END") == 0){
 			break;
 		}

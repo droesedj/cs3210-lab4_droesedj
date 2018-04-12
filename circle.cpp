@@ -9,7 +9,6 @@
 #include "shape.h"
 
 circle::circle(double x, double y, double z, double r){
-	//p1 = new matrix(4,1);
 	radius = (unsigned int)r;
 	(*p1)[0][0] = x;
 	(*p1)[1][0] = y;
@@ -18,7 +17,6 @@ circle::circle(double x, double y, double z, double r){
 }
 
 circle::circle(double x, double y, double z, double r, unsigned int col){
-	//p1 = new matrix(4,1);
 	radius = (unsigned int)r;
 	(*p1)[0][0] = x;
 	(*p1)[1][0] = y;
@@ -52,6 +50,7 @@ std::ostream& circle::out(std::ostream& output){
 }
 
 void circle::in(std::istream& input){
+	/// String used to "throw away" unneeded data.
 	std::string garbage;
 
 	input>>garbage>>color>>

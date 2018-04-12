@@ -40,6 +40,14 @@ line::~line(){
 	delete p2;
 }
 
+line& line::operator=(const line& from){
+	delete p2;
+
+	p2 = from.p2;
+
+	return *this;
+}
+
 void line::draw(GraphicsContext* gc){
 	gc->setColor(color);
 	gc->drawLine((int)(*p1)[0][0],(int)(*p1)[1][0],(int)(*p2)[0][0],(int)(*p2)[1][0]);

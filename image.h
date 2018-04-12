@@ -20,9 +20,8 @@
 class image {
 private:
 
+	/// Vector that stores all of the shapes.
 	std::vector<shape*> storage;
-
-	shape* firstShape;
 
 public:
 
@@ -66,9 +65,5 @@ public:
 	void in(std::istream& input);
 
 };
-
-
-
-
 
 #endif /* IMAGE_H_ */

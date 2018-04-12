@@ -37,13 +37,10 @@ protected:
 	/// Constructor.
 	shape();
 
-
-
 public:
 
 	/// Destructor.
 	virtual ~shape();
-
 
 	/**
 	*	Draws the shape.
@@ -120,11 +117,12 @@ protected:
 	matrix* p2;
 
 public:
-
+	/// Constructs a line with given coordinates.
 	line(double x0, double y0, double z0, double x1, double y1, double z1);
+	/// Same as default constructor with additional color parameter.
 	line(double x0, double y0, double z0, double x1, double y1, double z1, unsigned int col);
 	~line();
-
+	line& operator=(const line& from);
 	void draw(GraphicsContext* gc);
 	std::ostream& out(std::ostream& output);
 	void in(std::istream& input);
@@ -144,6 +142,7 @@ protected:
 public:
 	/// Construct a circle explicitly with coordinates and radius specified.
 	circle(double x, double y, double z, double r);
+	/// Same as default constructor, but includes color.
 	circle(double x, double y, double z, double r, unsigned int col);
 	~circle();
 	circle& operator=(const circle& from);
