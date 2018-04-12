@@ -16,6 +16,7 @@
 #include <string>
 #include <sstream>
 #include <iostream>
+#include <vector>
 
 
 
@@ -185,5 +186,30 @@ public:
 	void in(std::istream& input);
 };
 
+/**
+ * Poly class.
+ * Represents a n-sided polygon.
+ */
+class poly: public shape {
+protected:
+
+	/// Stores the coordinate points in a vector of 4x1 matrices
+	std::vector<matrix*> points;
+
+public:
+
+	/// Blank constructor.
+	poly();
+
+	poly(std::vector<matrix*> coords);
+
+	poly(std::vector<matrix*> coords, unsigned int col);
+
+	~poly();
+	poly& operator=(const poly& from);
+	void draw(GraphicsContext* gc);
+	std::ostream& out(std::ostream& output);
+	void in(std::istream& input);
+};
 
 #endif

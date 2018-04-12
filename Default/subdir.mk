@@ -11,6 +11,7 @@ CPP_SRCS += \
 ../main.cpp \
 ../matrix.cpp \
 ../point.cpp \
+../poly.cpp \
 ../shape.cpp \
 ../triangle.cpp \
 ../x11context.cpp 
@@ -23,6 +24,7 @@ OBJS += \
 ./main.o \
 ./matrix.o \
 ./point.o \
+./poly.o \
 ./shape.o \
 ./triangle.o \
 ./x11context.o 
@@ -35,6 +37,7 @@ CPP_DEPS += \
 ./main.d \
 ./matrix.d \
 ./point.d \
+./poly.d \
 ./shape.d \
 ./triangle.d \
 ./x11context.d 

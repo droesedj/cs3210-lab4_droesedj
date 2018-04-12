@@ -84,6 +84,11 @@ void image::in(istream& input){
 			myCircle->in(lineOut);
 			this->add(myCircle);
 
+		} else if(word.compare("POLY") == 0){
+			poly* myPoly = new poly();
+			myPoly->in(lineOut);
+			this->add(myPoly);
+
 		} else if(word.compare("IMAGE-END") == 0){
 			break;
 		}
