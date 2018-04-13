@@ -86,3 +86,14 @@ void poly::in(std::istream& input){
 		points.push_back(coord);
 	}
 }
+
+poly* poly::clone(){
+	std::vector<matrix*> outputVector;
+	for(matrix* i : points){
+		matrix* outputMatrix = new matrix(*i);
+		outputVector.push_back(outputMatrix);
+	}
+
+	poly* output = new poly(outputVector, color);
+	return output;
+}

@@ -57,3 +57,9 @@ void circle::in(std::istream& input){
 	(*p1)[0][0]>>(*p1)[1][0]>>(*p1)[2][0]>>(*p1)[3][0]
 	>>radius;
 }
+
+circle* circle::clone(){
+	circle* output = new circle((*p1)[0][0],(*p1)[1][0],(*p1)[2][0],
+								radius, color);
+	return output;
+}

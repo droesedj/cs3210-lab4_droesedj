@@ -28,6 +28,9 @@ public:
 	/// Default constructor
 	image();
 
+	/// Copy constructor.
+	image(image& from);
+
 	/// Destructor
 	~image();
 

@@ -18,6 +18,14 @@ using namespace std;
 image::image(){
 }
 
+image::image(image& from){
+
+	for(shape* i : from.storage){
+		this->add(i->clone());
+	}
+
+}
+
 image::~image(){
 	for(shape* i : storage){
 		delete i;

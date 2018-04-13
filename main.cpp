@@ -93,14 +93,22 @@ int main(void)
 
 	theImage->in(pointToReadIn);
 
-	theImage->draw(gc);
+	//theImage->draw(gc);
 
-	theImage->out(std::cout);
+	image* attackOfTheClones = new image(*theImage);
+
+	attackOfTheClones->draw(gc);
+	attackOfTheClones->out(std::cout);
+
+	//theImage->out(std::cout);
 
 	sleep(6);
 
 	theImage->erase();
 	delete theImage;
+
+	attackOfTheClones->erase();
+	delete attackOfTheClones;
 
 	delete gc;
 

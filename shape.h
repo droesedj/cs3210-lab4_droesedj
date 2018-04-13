@@ -68,6 +68,11 @@ public:
 	 * @return Matrix containing the origin of the shape.
 	 */
 	virtual matrix* getOrigin();
+
+	/**
+	 * @return pointer to a copy of the current shape.
+	 */
+	virtual shape* clone() = 0;
 };
 
 ///===================
@@ -105,6 +110,8 @@ public:
 
 	std::ostream& out(std::ostream& output);
 	void in(std::istream& input);
+
+	point* clone();
 };
 
 /**
@@ -127,6 +134,7 @@ public:
 	void draw(GraphicsContext* gc);
 	std::ostream& out(std::ostream& output);
 	void in(std::istream& input);
+	line* clone();
 };
 
 
@@ -150,6 +158,7 @@ public:
 	void draw(GraphicsContext* gc);
 	std::ostream& out(std::ostream& output);
 	void in(std::istream& input);
+	circle* clone();
 };
 
 
@@ -184,6 +193,7 @@ public:
 	void draw(GraphicsContext* gc);
 	std::ostream& out(std::ostream& output);
 	void in(std::istream& input);
+	triangle* clone();
 };
 
 /**
@@ -210,6 +220,7 @@ public:
 	void draw(GraphicsContext* gc);
 	std::ostream& out(std::ostream& output);
 	void in(std::istream& input);
+	poly* clone();
 };
 
 #endif

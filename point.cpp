@@ -46,3 +46,9 @@ void point::in(std::istream& input){
 
 	input>>garbage>>color>>(*p1)[0][0]>>(*p1)[1][0]>>(*p1)[2][0]>>(*p1)[3][0];
 }
+
+point* point::clone(){
+
+	point* output = new point((*p1)[0][0],(*p1)[1][0],(*p1)[2][0],color);
+	return output;
+}

@@ -102,3 +102,11 @@ void triangle::in(std::istream& input){
 	(*p2)[0][0]>>(*p2)[1][0]>>(*p2)[2][0]>>(*p2)[3][0]>>
 	(*p3)[0][0]>>(*p3)[1][0]>>(*p3)[2][0]>>(*p3)[3][0];
 }
+
+triangle* triangle::clone(){
+	triangle* output = new triangle((*p1)[0][0],(*p1)[1][0],(*p1)[2][0],
+									(*p2)[0][0],(*p2)[1][0],(*p2)[2][0],
+									(*p3)[0][0],(*p3)[1][0],(*p3)[2][0],
+									color);
+	return output;
+}
