@@ -31,9 +31,9 @@ int main(int argc, char**argv) {
 	} else if (arg2.compare("DEMO") == 0) {
 		// Do the file output demo
 
-
 		std::ofstream fileOut;
 
+		// Set up a bunch of matrices
 		matrix* p0 = new matrix(4, 1);
 		(*p0)[0][0] = 50.0;
 		(*p0)[1][0] = 200.0;
@@ -66,12 +66,14 @@ int main(int argc, char**argv) {
 
 		std::vector<matrix*> myVect;
 
+		// set up a matrix vector
 		myVect.push_back(p0);
 		myVect.push_back(p1);
 		myVect.push_back(p2);
 		myVect.push_back(p3);
 		myVect.push_back(p4);
 
+		// A bunch of demo data for reading in a predefined istream.
 		std::istringstream pointToReadIn("POINT	19987215		88	275	0	1\n"
 				"CIRCLE	88888		100	475	0	1	40\n"
 				"TRI	16777777		300	100	0	1		"
@@ -82,42 +84,52 @@ int main(int argc, char**argv) {
 
 		GraphicsContext* gc = new X11Context(800, 600, GraphicsContext::BLACK);
 
+		// create a circle
 		circle* theBigOlCircle = new circle(200.0, 175.0, 0.5, 50.0,
 				GraphicsContext::GREEN);
 
+		// create a point
 		point* whatsThePoint = new point(100.0, 300.0, 0.0,
 				GraphicsContext::WHITE);
 
+		// create a line
 		line* theBestLineEver = new line(20.0, 75.0, 0.0, 300.0, 288.0, 0.0,
 				GraphicsContext::BLUE);
 
+		// create a triangle
 		triangle* theTriHard = new triangle(400.0, 400.0, 0.0, 450.0, 577.0,
 				0.0, 432.0, 588.0, 0.0, GraphicsContext::YELLOW);
 
+		// create a polygon with the matrices from earlier.
 		poly* myPolygon = new poly(myVect, GraphicsContext::CYAN);
 
+		// create a new image.
 		image* theImage = new image();
 
+		// add all of the shapes to the image.
 		theImage->add(theBigOlCircle);
 		theImage->add(whatsThePoint);
 		theImage->add(theBestLineEver);
 		theImage->add(theTriHard);
-
 		theImage->add(myPolygon);
 
+		// Add shapes to the image from the raw istream.
 		theImage->in(pointToReadIn);
 
+		// make a copy of the image.
 		image* attackOfTheClones = new image(*theImage);
 
+		// draw the copied image and print contents to console.
 		attackOfTheClones->draw(gc);
 		attackOfTheClones->out(std::cout);
 
 		sleep(6);
 
+		// delete the old image.
 		theImage->erase();
 		delete theImage;
 
-
+		// output the new image to a text file.
 		fileOut.open("demo.txt");
 		if(fileOut.is_open()){
 			attackOfTheClones->out(fileOut);
@@ -130,6 +142,7 @@ int main(int argc, char**argv) {
 
 		fileOut.close();
 
+		// erase and delete the new image.
 		attackOfTheClones->erase();
 		delete attackOfTheClones;
 		delete gc;
