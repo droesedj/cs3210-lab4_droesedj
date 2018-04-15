@@ -22,6 +22,9 @@ int main(int argc, char**argv) {
 	std::string arg2 = argv[1];
 
 	if (argc < 2) {
+		std::cout << "Run demo mode if you want a demo file created.\n";
+		std::cout << "Run file load mode if you have a pre-existing shape file.\n";
+
 		std::cout << "Usage (file load): " << argv[0] << " <filename>\n";
 		std::cout << "Usage (demo mode): " << argv[0] << " DEMO\n";
 		return 0;
