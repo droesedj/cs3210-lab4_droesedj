@@ -15,35 +15,29 @@
 
 using namespace std;
 
-image::image(){
-}
+image::image(){}
 
 image::image(image& from){
 
 	for(shape* i : from.storage){
 		this->add(i->clone());
 	}
-
 }
 
 image::~image(){
 	for(shape* i : storage){
 		delete i;
 	}
-
 	storage.clear();
 }
 
 image& image::operator=(const image& from){
 	this->erase();
-
 	storage = from.storage;
-
 	return *this;
 }
 
 void image::add(shape* addShape){
-
 	storage.push_back(addShape);
 }
 
@@ -51,15 +45,12 @@ void image::draw(GraphicsContext* gc){
 	for(shape* i : storage){
 		i->draw(gc);
 	}
-
 }
 
 void image::erase(){
-
 	for(shape* i : storage){
 		delete i;
 	}
-
 	storage.clear();
 }
 
@@ -105,7 +96,6 @@ void image::in(istream& input){
 
 std::ostream& image::out(std::ostream& output){
 	output << "IMAGE-START\n";
-
 	for(shape* i : storage){
 		i->out(output);
 	}

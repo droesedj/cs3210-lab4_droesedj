@@ -62,6 +62,38 @@ public:
 	*/
 	std::ostream& out(std::ostream& output);
 
+	/** ---------------------------------
+	 * 	|===| IMAGE FILE FORMAT KEY |===|
+	 *  ---------------------------------
+	 *
+	 *  	This key gives examples of how various shapes are
+	 *  sent to the output stream, and how the input stream
+	 *  expects them to be formatted.  This formatting MUST
+	 *  be followed exactly, otherwise undefined behavior will
+	 *  be present.  All lines are case sensitive.
+	 *
+	 *  Each shape is separated by a newline
+	 *
+	 *  =================================
+	 *  (header)
+	 *  IMAGE-START
+	 *
+	 *  (point)
+	 *  POINT <COLOR> <X> <Y> <Z> <NORMAL>
+	 *
+	 *  (line)
+	 *  LINE <COLOR> <X0> <Y0> <Z0> <NORMAL0> <X1> <Y1> <Z1> <NORMAL1>
+	 *
+	 *  (triangle)
+	 *  TRI <COLOR> <X0> <Y0> <Z0> <NORMAL0> <...> <X2> <Y2> <Z2> <NORMAL2>
+	 *
+	 *  (n-sided polygon)
+	 *  POLY <COLOR> <X0> <Y0> <Z0> <NORMAL0> <...> <Xn> <Yn> <Zn> <NORMALn>
+	 *
+	 *  (circle)
+	 *  CIRCLE <COLOR> <RADIUS> <X> <Y> <Z>
+	 */
+
 	/**
 	*	Reads and applies image properties from an istream.
 	*/

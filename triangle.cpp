@@ -73,9 +73,12 @@ triangle& triangle::operator=(const triangle& from){
 
 void triangle::draw(GraphicsContext* gc){
 	gc->setColor(color);
-	gc->drawLine((int)(*p1)[0][0],(int)(*p1)[1][0],(int)(*p2)[0][0],(int)(*p2)[1][0]);
-	gc->drawLine((int)(*p2)[0][0],(int)(*p2)[1][0],(int)(*p3)[0][0],(int)(*p3)[1][0]);
-	gc->drawLine((int)(*p3)[0][0],(int)(*p3)[1][0],(int)(*p1)[0][0],(int)(*p1)[1][0]);
+	gc->drawLine((int)(*p1)[0][0],(int)(*p1)[1][0],
+				 (int)(*p2)[0][0],(int)(*p2)[1][0]);
+	gc->drawLine((int)(*p2)[0][0],(int)(*p2)[1][0],
+				 (int)(*p3)[0][0],(int)(*p3)[1][0]);
+	gc->drawLine((int)(*p3)[0][0],(int)(*p3)[1][0],
+				 (int)(*p1)[0][0],(int)(*p1)[1][0]);
 }
 
 std::ostream& triangle::out(std::ostream& output){

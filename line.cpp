@@ -8,7 +8,8 @@
 
 #include "shape.h"
 
-line::line(double x0, double y0, double z0, double x1, double y1, double z1){
+line::line(double x0, double y0, double z0,
+		   double x1, double y1, double z1){
 	p2 = new matrix(4,1);
 	(*p1)[0][0] = x0;
 	(*p1)[1][0] = y0;

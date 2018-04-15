@@ -8,32 +8,32 @@
 
 #include "shape.h"
 
-poly::poly(){
+poly::poly() {
 
 }
 
-poly::poly(std::vector<matrix*> coords){
+poly::poly(std::vector<matrix*> coords) {
 	points = coords;
 }
 
-poly::poly(std::vector<matrix*> coords, unsigned int col){
+poly::poly(std::vector<matrix*> coords, unsigned int col) {
 	color = col;
 	points = coords;
 }
 
-poly::~poly(){
-	for(matrix* i : points){
+poly::~poly() {
+	for (matrix* i : points) {
 		delete i;
 	}
 
 	points.clear();
 }
 
-poly& poly::operator=(const poly& from){
+poly& poly::operator=(const poly& from) {
 
 	color = from.color;
 
-	for(matrix* i : points){
+	for (matrix* i : points) {
 		delete i;
 	}
 	points.clear();
@@ -42,54 +42,66 @@ poly& poly::operator=(const poly& from){
 	return *this;
 }
 
-void poly::draw(GraphicsContext* gc){
+void poly::draw(GraphicsContext* gc) {
 
 	matrix* iter;
 	matrix* iter2;
 
 	gc->setColor(color);
 
-	for(unsigned int i = 1; i < points.size(); i++){
-		iter = points.at(i-1);
+	for (unsigned int i = 1; i < points.size(); i++) {
+		iter = points.at(i - 1);
 		iter2 = points.at(i);
 
-		gc->drawLine((int)(*iter)[0][0],(int)(*iter)[1][0],(int)(*iter2)[0][0],(int)(*iter2)[1][0]);
+		gc->drawLine((int) (*iter)[0][0], (int) (*iter)[1][0],
+				(int) (*iter2)[0][0], (int) (*iter2)[1][0]);
 	}
 
 	// connect the tail to the head
-	iter = points.at(0);
-	iter2 = points.at(points.size() - 1);
-	gc->drawLine((int)(*iter)[0][0],(int)(*iter)[1][0],(int)(*iter2)[0][0],(int)(*iter2)[1][0]);
+	iter = points.front();
+	iter2 = points.back();
+	gc->drawLine((int) (*iter)[0][0], (int) (*iter)[1][0], (int) (*iter2)[0][0],
+			(int) (*iter2)[1][0]);
 }
 
-std::ostream& poly::out(std::ostream& output){
+std::ostream& poly::out(std::ostream& output) {
 	output << "POLY\t" << color << "\t";
 
-	for(matrix* i : points){
-	output  << (*i)[0][0] << ' '
-			<< (*i)[1][0] << ' '
-			<< (*i)[2][0] << ' '
-			<< (*i)[3][0] << "\t";
+	for (matrix* i : points) {
+		output << (*i)[0][0] << ' ' << (*i)[1][0] << ' ' << (*i)[2][0] << ' '
+				<< (*i)[3][0] << "\t";
 	}
 
 	output << '\n';
 	return output;
 }
 
-void poly::in(std::istream& input){
+void poly::in(std::istream& input) {
+	/// Used to "eat" unneeded data.
 	std::string garbage;
 
+	// Clear any pre-existing coordinates.
+	points.clear();
+
 	input >> garbage >> color;
-	while(!input.eof()){
-		matrix* coord = new matrix(4,1);
-		input>>(*coord)[0][0]>>(*coord)[1][0]>>(*coord)[2][0]>>(*coord)[3][0];
-		points.push_back(coord);
+	while (!input.eof()) {
+		matrix* coord = new matrix(4, 1);
+		input >> (*coord)[0][0] >> (*coord)[1][0] >> (*coord)[2][0]
+				>> (*coord)[3][0];
+		if (!input.eof()) {
+			// not EOF, add coordinate to poly.
+			points.push_back(coord);
+		} else {
+			// EOF reached, cleanup.
+			delete coord;
+			break;
+		}
 	}
 }
 
-poly* poly::clone(){
+poly* poly::clone() {
 	std::vector<matrix*> outputVector;
-	for(matrix* i : points){
+	for (matrix* i : points) {
 		matrix* outputMatrix = new matrix(*i);
 		outputVector.push_back(outputMatrix);
 	}

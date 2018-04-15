@@ -108,9 +108,23 @@ public:
 	 */
 	void draw(GraphicsContext* gc);
 
+	/**
+	 * Output point properties to an ostream.
+	 * @param output ostream to output to.
+	 * @return ostream with output data.
+	 */
 	std::ostream& out(std::ostream& output);
+
+	/**
+	 * Reads in data from an istream and updates the point.
+	 * @param input istream to read point data from.
+	 */
 	void in(std::istream& input);
 
+	/**
+	 * Creates a copy of the point.
+	 * @return Pointer to the new point in memory.
+	 */
 	point* clone();
 };
 
@@ -126,14 +140,42 @@ protected:
 
 public:
 	/// Constructs a line with given coordinates.
-	line(double x0, double y0, double z0, double x1, double y1, double z1);
+	line(double x0, double y0, double z0,
+		 double x1, double y1, double z1);
+
 	/// Same as default constructor with additional color parameter.
-	line(double x0, double y0, double z0, double x1, double y1, double z1, unsigned int col);
+	line(double x0, double y0, double z0,
+		 double x1, double y1, double z1, unsigned int col);
+
+	/// Destructor
 	~line();
+
+	/// Assignment operator
 	line& operator=(const line& from);
+
+	/**
+	 * Draws the line on the given GraphicsContext.
+	 * @param gc GraphicsContext to draw the line on.
+	 */
 	void draw(GraphicsContext* gc);
+
+	/**
+	 * Output line properties to an ostream.
+	 * @param output ostream to output to.
+	 * @return ostream with output data.
+	 */
 	std::ostream& out(std::ostream& output);
+
+	/**
+	 * Reads in data from an istream and updates the line.
+	 * @param input istream to read point data from.
+	 */
 	void in(std::istream& input);
+
+	/**
+	 * Creates a copy of the line.
+	 * @return Pointer to the copied line in memory.
+	 */
 	line* clone();
 };
 
@@ -151,13 +193,39 @@ protected:
 public:
 	/// Construct a circle explicitly with coordinates and radius specified.
 	circle(double x, double y, double z, double r);
+
 	/// Same as default constructor, but includes color.
 	circle(double x, double y, double z, double r, unsigned int col);
+
+	/// Destructor
 	~circle();
+
+	/// Assignment operator
 	circle& operator=(const circle& from);
+
+	/**
+	 * Draws the circle on the given GraphicsContext
+	 * @param gc GraphicsContext to draw the circle on.
+	 */
 	void draw(GraphicsContext* gc);
+
+	/**
+	 * Output circle properties to an ostream.
+	 * @param output ostream to output to.
+	 * @return ostream with output data.
+	 */
 	std::ostream& out(std::ostream& output);
+
+	/**
+	 * Reads in data from an istream and updates the circle.
+	 * @param input istream to read point data from.
+	 */
 	void in(std::istream& input);
+
+	/**
+	 * Creates a copy of the circle.
+	 * @return Pointer to the copied circle in memory.
+	 */
 	circle* clone();
 };
 
@@ -191,8 +259,24 @@ public:
 	~triangle();
 	triangle& operator=(const triangle& from);
 	void draw(GraphicsContext* gc);
+
+	/**
+	 * Output triangle properties to an ostream.
+	 * @param output ostream to output to.
+	 * @return ostream with output data.
+	 */
 	std::ostream& out(std::ostream& output);
+
+	/**
+	 * Reads in data from an istream and updates the triangle.
+	 * @param input istream to read point data from.
+	 */
 	void in(std::istream& input);
+
+	/**
+	 * Creates a copy of the triangle.
+	 * @return Pointer to the copied triangle in memory.
+	 */
 	triangle* clone();
 };
 
@@ -211,15 +295,34 @@ public:
 	/// Blank constructor.
 	poly();
 
+	/// Constructor with a specified vector of coordinate matrices.
 	poly(std::vector<matrix*> coords);
 
+	/// Same as above constructor, but has specified color.
 	poly(std::vector<matrix*> coords, unsigned int col);
 
+	/// Destructor
 	~poly();
 	poly& operator=(const poly& from);
 	void draw(GraphicsContext* gc);
+
+	/**
+	 * Output polygon properties to an ostream.
+	 * @param output ostream to output to.
+	 * @return ostream with output data.
+	 */
 	std::ostream& out(std::ostream& output);
+
+	/**
+	 * Reads in data from an istream and updates the polygon.
+	 * @param input istream to read point data from.
+	 */
 	void in(std::istream& input);
+
+	/**
+	 * Creates a copy of the polygon.
+	 * @return Pointer to the copied polygon in memory.
+	 */
 	poly* clone();
 };
 
